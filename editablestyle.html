@@ -25,7 +25,7 @@
   <script type="module">
     import { codeToHtml } from 'https://esm.sh/shiki';
     const styledom = document.querySelector('[editablestyle]');
-    document.body.innerHTML = await codeToHtml(styledom.innerHTML, { lang: 'css', theme: 'min-dark' });
+    document.body.innerHTML = await codeToHtml(styledom.innerHTML, { lang: 'css', theme: 'vitesse-dark' });
     const codedom = document.querySelector('code');
     codedom.setAttribute("contenteditable", true);
     codedom.addEventListener('input', () => {
