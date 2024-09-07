@@ -1,0 +1,35 @@
+<head>
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/shikijs/shiki/main/docs/public/logo.svg" type="image/x-icon">
+  <title>editablestyle</title>
+  <style editablestyle>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .shiki {
+      min-height: 100dvh;
+      padding: 1rem;
+    }
+
+    code {
+      font-size: 1.2rem;
+      font-family: Consolas, monospace;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script type="module">
+    import { codeToHtml } from 'https://esm.sh/shiki';
+    const styledom = document.querySelector('[editablestyle]');
+    document.body.innerHTML = await codeToHtml(styledom.innerHTML, { lang: 'css', theme: 'min-dark' });
+    const codedom = document.querySelector('code');
+    codedom.setAttribute("contenteditable", true);
+    codedom.addEventListener('input', () => {
+      styledom.innerHTML = codedom.textContent;
+    });
+  </script>
+</body>
