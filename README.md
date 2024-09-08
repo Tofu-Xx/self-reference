@@ -6,4 +6,4 @@ will immediately understand all of its source code
 
 If you find the above page interesting,   
 then you will definitely like this one more  
-<a href="https://self-reference.netlify.app/editablestyle" target="_blank">https://self-reference.netlify.app/editablestyle</a>
+(https://self-reference.netlify.app/editablestyle/)[https://self-reference.netlify.app/editablestyle/]
