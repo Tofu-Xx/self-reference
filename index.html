@@ -1,17 +1,16 @@
 <head>
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/shikijs/shiki/main/docs/public/logo.svg" type="image/x-icon">
+  <link rel="icon" href="https://raw.githubusercontent.com/shikijs/shiki/main/docs/public/logo.svg" type="svg+xml" />
   <title>self-reference</title>
   <style>
-    @import "https://unpkg.com/tofukit/dist/reset.css";
-
+    @import "https://unpkg.com/@tofukit/resetcss";
     .shiki {
+      width: fit-content;
+      min-width: 100vw;
       min-height: 100vh;
-      padding: 1rem;
-    }
-
-    code {
-      font-size: 1.2rem;
-      font-family: Consolas, monospace;
+      code {
+        font-size: 1.2rem;
+        font-family: Consolas;
+      }
     }
   </style>
 </head>
@@ -19,7 +18,7 @@
 <body>
   <script type="module">
     import { codeToHtml } from 'https://esm.sh/shiki';
-    const opt = { lang: 'html', theme: 'vitesse-dark' };
+    const opt = { lang: 'html', theme: 'github-dark' };
     const code = document.documentElement.innerHTML;
     document.body.innerHTML = await codeToHtml(code, opt);
   </script>
