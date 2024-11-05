@@ -1,16 +1,13 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://shiki.style/logo.svg" type="svg+xml" />
-  <!-- <script src="https://cdn.bootcss.com/lz-string/1.4.4/lz-string.js"></script> -->
   <script src="https://unpkg.com/lz-string"></script>
   <title>self-reference</title>
   <style>
     @import "https://unpkg.com/@tofukit/resetcss";
-
     .shiki {
       max-width: 100vw;
       min-height: 100vh;
-
       code {
         font-size: 1rem;
         font-family: Consolas;
@@ -18,11 +15,11 @@
     }
   </style>
 </head>
-
 <body>
   <script type="module">
     import { codeToHtml } from 'https://esm.sh/shiki';
-    const themes = LZString.decompress('Ↄ뀦Ӡ悦猰͌ʻ䋀ⴀ㵐➚\uD921Ö젌氀⸀㧖ꖔॢ㘁饠\uDC56탓囬Ú톫\uDABD䛌\uDB61谙耋ᚴꇲ頶䰨锔ꔦ嬝慨̻⒀괨譙⭙쩪ܚ죠ͳ脃鐈煌킓Α멻竻輻ࢰΚ⪸쒰툩ꀁᤄ蘧▤昙臀玣ࠥ⒧ꐘ邰쏁茡斖⧇扑䂀텠ז铧䗄靧ꟷ쒐ᔖఴ踇㘪랶眃瘩䆘펷→茀윀θ쑭沀䃑驯滬ὠṻ⊊饻㻳䴘鮛쮈䁔쉬㉎༆䏼뱀遢谗׉砡됨瀘ᨏ荡Ꚉ졠㔓இ恴灐ሠᴏ䟂레ᘯႆ젌಑ᴵ춡ŀ똬搭⁨䯛ࡹ빚뭞ᅓꍁ邢챫㤌托큘鐹吊ꨄ菹遾媴ᷤ换钃偏戂핀፶荪攒僲섊㶡䡡팩춦㎀ே큁鐍過儠⟘藋ڠꆖ㡬ࠟꚘࠝ䔧\uDB00à³⇖搂ᐛ௏ꙹ䱴䑻褯ꐝᐊ잪柖꯰\x00').split(',');
+    import { decompressFromBase64 } from 'https://esm.sh/lz-string'
+    const themes = decompressFromBase64('IYOwJgTg9gtgpnMwA0wCu0LALQA9UCea2SEA1sgMbAAuADnWpZQJYjYBmWDcVtDTVuwA2tGr2r1GzNthjBmACxa0ofKYNkwolRSlJlsdYWgDOySArSiLWStZymoHGsjgA3OBA5QIcUzQkwORunt6+/oHCLADmiq4xLDSKaABGQSGJyWkZhmBwHOjCCUkp6QYkLDDwYMhZZbnYynHYlFAgNFgBdaU50XEl2en98SQFRYMNI4HNiq3tncDdilBmNO3IZKDAMcAA7jiWMRtbIDv7OMJQNGab27sH2AeeyKKmXs+800Ym5vLiEBUwmwyTg8GQ/y8QJBijBcFyXghtChwGBoPg2GmiMhgNRMLh2B0cFASIB0PR8LoqLgIFi8QhsgMDJEdNc2hAUC2LGQtIGhL2wh5vlq7XhFTo0GQosxrOQxiWNBYlDlUCqoEg/mQflq0HeRjYvF1lINQT2IC1UD1dBN2g2plElDywQo9oUhh0ynNpjOAC8fQQZQNkE5RICfYhcsGoKGWOGwIH6aYCB1FJ9sAAOAAsyHWZAIUGwvPpnlMdER7iS/j1qQdFAr4lMeqZ9ar8OmQA===').split(',');
     const theme = themes[Math.floor(Math.random() * themes.length)];
     const opt = { lang: 'html', theme };
     const code = document.documentElement.innerHTML;
