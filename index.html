@@ -8,24 +8,35 @@
       max-width: 100vw;
       min-height: 100vh;
       code {
-        font-size: 1rem;
+        line-height: 1.1;
         font-family: Consolas;
       }
+    }
+    .source-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      color: #fdb;
+      padding: .5rem;
+      background: #456;
+      border-radius: .5rem;
+      mix-blend-mode:exclusion;
     }
   </style>
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/lzma/src/lzma_worker.min.js"></script>
   <script type="module">
-    import { decode } from 'https://esm.sh/base65536';
-    import { codeToHtml } from 'https://esm.sh/shiki';
+    import { decode } from 'https://esm.sh/base65536'
+    import { codeToHtml } from 'https://esm.sh/shiki'
     const bfr = decode('㑝㐀𧔂㐂㐀㐀㐀𢄰𣞈桳罅絒𧙘𦆹𦚙𓆨袹𠟕䎡𧪥慧𠟊𧡩曭𧯚𢮫𣬼幃牼𢫜皦𡨂豐𤔛㙔𒋃𒀔𢧩𡝫猜𢛊䟭㢮癸𢍐䱳崳𠓶𧛠纁酷㱺闽荇𤳇𧝭擔𣀘𧗸𥼻䅺𢜸𥻓㤥𥦍𧛍ꎉ𔔱𨁫𢭓酴缘𣂏𢫨𣟁𣿮𠇰敊𦬭𢙪𧇷𧋶潮𤎿𒀘町𠣿䔤ꗌ匇𥀷涩ꏭ𢈈𤼳𥆅𢊳𣐷𠰼𣤊阽𦛼𡘖𡃶𧒊蟫𥗯𢹁𡻹𦧢偟𥒌𧎎𨐈𥽂䀣𥶷𖢘𧭍烵𢰛窠𠪇𡗪𣔰䗗𨋹𠕙祰𢑜𧘿𣼺蓐儚𢐅徜𠻮襖𣘚𡱱𤔒薽𠧚皬𡗻𧀕𣞱𥘸額𡋣厕𣆦涠𤂥𦷶蜸𧛷㔰稚𢒌泺𢥗輆𧏰𡠽𨊗䝒𡖅伻劒涸篨𠟔䢓𦮐𤇆𠙐𢑻憵𦅟覗𢞰嫅𨒘𥯶𠞀');
-    LZMA.decompress(bfr,async (d) => {
-      const themes = d.split(',');
-      const theme = themes[Math.floor(Math.random() * themes.length)];
-      const opt = { lang: 'html', theme };
-      const code = document.documentElement.innerHTML;
-      document.body.innerHTML = await codeToHtml(code, opt);
+    const sourceUrl = 'https://github.com/tofu-xx/self-reference/blob/main/index.html'
+    LZMA.decompress(bfr, async (d) => {
+      const themes = d.split(',')
+      const theme = themes[Math.floor(Math.random() * themes.length)]
+      document.body.innerHTML = `${
+        await codeToHtml(document.documentElement.innerHTML, { lang: 'html', theme })
+      }<a href="${sourceUrl}" class="source-btn" target="_blank">source code</a>`
     });
   </script>
 </body>
