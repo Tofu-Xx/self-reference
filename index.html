@@ -1,7 +1,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://shiki.style/logo.svg" type="svg+xml" />
-  <script src="https://unpkg.com/lz-string"></script>
+  <link rel="icon" href="https://shiki.tmrs.site/logo.svg" />
   <title>self-reference</title>
   <style>
     @import "https://unpkg.com/@tofukit/resetcss";
@@ -16,13 +15,17 @@
   </style>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/lzma/src/lzma_worker.min.js"></script>
   <script type="module">
+    import { decode } from 'https://esm.sh/base65536';
     import { codeToHtml } from 'https://esm.sh/shiki';
-    import { decompressFromBase64 } from 'https://esm.sh/lz-string'
-    const themes = decompressFromBase64('IYOwJgTg9gtgpnMwA0wCu0LALQA9UCea2SEA1sgMbAAuADnWpZQJYjYBmWDcVtDTVuwA2tGr2r1GzNthjBmACxa0ofKYNkwolRSlJlsdYWgDOySArSiLWStZymoHGsjgA3OBA5QIcUzQkwORunt6+/oHCLADmiq4xLDSKaABGQSGJyWkZhmBwHOjCCUkp6QYkLDDwYMhZZbnYynHYlFAgNFgBdaU50XEl2en98SQFRYMNI4HNiq3tncDdilBmNO3IZKDAMcAA7jiWMRtbIDv7OMJQNGab27sH2AeeyKKmXs+800Ym5vLiEBUwmwyTg8GQ/y8QJBijBcFyXghtChwGBoPg2GmiMhgNRMLh2B0cFASIB0PR8LoqLgIFi8QhsgMDJEdNc2hAUC2LGQtIGhL2wh5vlq7XhFTo0GQosxrOQxiWNBYlDlUCqoEg/mQflq0HeRjYvF1lINQT2IC1UD1dBN2g2plElDywQo9oUhh0ynNpjOAC8fQQZQNkE5RICfYhcsGoKGWOGwIH6aYCB1FJ9sAAOAAsyHWZAIUGwvPpnlMdER7iS/j1qQdFAr4lMeqZ9ar8OmQA===').split(',');
-    const theme = themes[Math.floor(Math.random() * themes.length)];
-    const opt = { lang: 'html', theme };
-    const code = document.documentElement.innerHTML;
-    document.body.innerHTML = await codeToHtml(code, opt);
+    const bfr = decode('㑝㐀𧔂㐂㐀㐀㐀𢄰𣞈桳罅絒𧙘𦆹𦚙𓆨袹𠟕䎡𧪥慧𠟊𧡩曭𧯚𢮫𣬼幃牼𢫜皦𡨂豐𤔛㙔𒋃𒀔𢧩𡝫猜𢛊䟭㢮癸𢍐䱳崳𠓶𧛠纁酷㱺闽荇𤳇𧝭擔𣀘𧗸𥼻䅺𢜸𥻓㤥𥦍𧛍ꎉ𔔱𨁫𢭓酴缘𣂏𢫨𣟁𣿮𠇰敊𦬭𢙪𧇷𧋶潮𤎿𒀘町𠣿䔤ꗌ匇𥀷涩ꏭ𢈈𤼳𥆅𢊳𣐷𠰼𣤊阽𦛼𡘖𡃶𧒊蟫𥗯𢹁𡻹𦧢偟𥒌𧎎𨐈𥽂䀣𥶷𖢘𧭍烵𢰛窠𠪇𡗪𣔰䗗𨋹𠕙祰𢑜𧘿𣼺蓐儚𢐅徜𠻮襖𣘚𡱱𤔒薽𠧚皬𡗻𧀕𣞱𥘸額𡋣厕𣆦涠𤂥𦷶蜸𧛷㔰稚𢒌泺𢥗輆𧏰𡠽𨊗䝒𡖅伻劒涸篨𠟔䢓𦮐𤇆𠙐𢑻憵𦅟覗𢞰嫅𨒘𥯶𠞀');
+    LZMA.decompress(bfr,async (d) => {
+      const themes = d.split(',');
+      const theme = themes[Math.floor(Math.random() * themes.length)];
+      const opt = { lang: 'html', theme };
+      const code = document.documentElement.innerHTML;
+      document.body.innerHTML = await codeToHtml(code, opt);
+    });
   </script>
 </body>
